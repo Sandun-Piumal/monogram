@@ -35,9 +35,9 @@ jobs:
         chmod +x presentation/src/main/cpp/build.sh
 
     - name: Build libvpx
-      run: cd presentation/src/main/cpp && ./build.sh
-      env:
-        ANDROID_NDK_HOME: ${{ env.ANDROID_NDK_ROOT }}
+      run: |
+        export ANDROID_NDK_HOME=$ANDROID_NDK_ROOT
+        cd presentation/src/main/cpp && ./build.sh
 
     - name: Build Official Debug APK
       run: ./gradlew assembleOfficialDebug
