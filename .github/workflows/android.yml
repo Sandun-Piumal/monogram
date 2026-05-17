@@ -45,8 +45,20 @@ jobs:
     - name: Run Official Debug Unit Tests
       run: ./gradlew testOfficialDebugUnitTest
 
+    - name: Upload Official Debug APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: official-debug-apk
+        path: app/build/outputs/apk/official/debug/*.apk
+
     - name: Build Telemt Debug APK
       run: ./gradlew assembleTelemtDebug
 
     - name: Run Telemt Debug Unit Tests
       run: ./gradlew testTelemtDebugUnitTest
+
+    - name: Upload Telemt Debug APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: telemt-debug-apk
+        path: app/build/outputs/apk/telemt/debug/*.apk
